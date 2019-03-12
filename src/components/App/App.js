@@ -1,27 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import CounterContainer from '../Counter/CounterContainer';
 
-const App = ({ isReady, counter, updateCounter }) => (
-  <div className="container">
-    {isReady && <div>App is Ready</div>}
-    <h1>Hello there</h1>
-    <p>{counter}</p>
-    <button value="2" type="button" onClick={updateCounter}>
-      Remove
-    </button>
-    <button value="3" type="button" onClick={updateCounter}>
-      Reset
-    </button>
-    <button value="1" type="button" onClick={updateCounter}>
-      Add
-    </button>
-  </div>
+const App = () => (
+  <Router>
+    <div className="container">
+      <nav>
+        <Link to="/counter">Counter</Link>
+      </nav>
+      <div className="App">
+        <Route path="/counter" component={CounterContainer} />
+      </div>
+    </div>
+  </Router>
 );
-
-App.propTypes = {
-  isReady: PropTypes.bool.isRequired,
-  counter: PropTypes.number.isRequired,
-  updateCounter: PropTypes.func.isRequired,
-};
 
 export default App;
