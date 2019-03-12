@@ -17,10 +17,28 @@ class AppContainer extends Component {
   }
 
   handleClick = event => {
-    console.log(event.currentTarget);
-    this.setState(prevState => ({
-      counter: prevState.counter + 1,
-    }));
+    const { counter } = this.state;
+    const operation = parseInt(event.currentTarget.value);
+    // We need to parseInt in order to change type of the value (default is string, not number)
+    switch (operation) {
+      case 1: // 1 equal to +
+        this.setState(prevState => ({
+          counter: prevState.counter + 1,
+        }));
+        break;
+      case 2: // 2 equal to -
+        if (counter === 0) return;
+        this.setState(prevState => ({
+          counter: prevState.counter - 1,
+        }));
+        break;
+      default:
+        // default equal to reset
+        this.setState({
+          counter: 0,
+        });
+        break;
+    }
   };
 
   removeCover() {
@@ -34,7 +52,7 @@ class AppContainer extends Component {
   render() {
     const { isReady, counter } = this.state;
 
-    return <App isReady={isReady} incrementCounter={this.handleClick} counter={counter} />;
+    return <App isReady={isReady} updateCounter={this.handleClick} counter={counter} />;
   }
 }
 
