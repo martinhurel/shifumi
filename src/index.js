@@ -1,7 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import 'normalize.css'
-import '../assets/sass/style.scss'
-import App from './components/app'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import 'normalize.css';
+import '../assets/sass/style.scss';
+import AppContainer from './components/App/AppContainer';
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<AppContainer />, document.getElementById('root'));
